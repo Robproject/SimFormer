@@ -27,8 +27,6 @@ def get_I_C(Z, E):
 def get_efficiency(V1, V2, I1, I2):
     Po = (V2 * I2).real
     Pi = abs(I1) * abs(V1) * math.cos(cmath.phase(V1) - cmath.phase(I1))
-    print(cmath.phase(V1), cmath.phase(I1))
-    print(Po, Pi)
     n = Po/Pi
     return n
 
@@ -60,11 +58,11 @@ def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
         V_1 = I_1 * Z_1 + E_1
 
     n = get_efficiency(V_1, V_2, I_1, I_2)
-    print('n =', n*100, "%")
-    VR = (abs(V_1) - a*abs(V_2))/(a*abs(V_2))
-    print('VR =', VR*100, "%")
-    print('V_1 =', cmath.polar(V_1), 'I_1 =', cmath.polar(I_1) )
-    print('V_2 =', cmath.polar(V_2), 'I_2 =', cmath.polar(I_2))
+    print('\u03B7 = %4.2f%%' % (n*100))
+    VR = (abs(E_2) - abs(V_2))/(a*abs(E_2))
+    print('VR = %4.4f%%' % (VR*100))
+    print('V_1 = %5.2f\u2220%4.2fV, I_1 = %5.2f\u2220%4.2fA' % (abs(V_1), cmath.phase(V_1)*180/cmath.pi, cmath.phase(I_1), cmath.phase(I_1)*180/cmath.pi) )
+    print('V_2 = %5.2f\u2220%4.2fV, I_2 = %5.2f\u2220%4.2fA' % (abs(V_2), cmath.phase(V_2)*180/cmath.pi, cmath.phase(I_2), cmath.phase(I_2)*180/cmath.pi) )
 
     arrow = [E_2, E_1, V_2, V_1, I_2, I_1]
     color = ['violet', 'green', 'blue', 'red', 'orange', 'red']
@@ -88,5 +86,5 @@ def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
 
 if __name__ == '__main__':
 
-    SimForm(120, 540, .8, .85, "lag", 2, 1.5 + 1.5j, 1.12 + 1.13j, 60 + 80j, 'center' )
+    SimForm(240, 2400, .8, 1, "lag", 10, 1.5 + 2.5j, .02 + .03j, 6000 + 8000j, 'center' )
 #          V2(V), |S|(VA), Load(.%%), pf(.%%), lead/lag, a, Z1, Z2, ZC, 'before' or 'center'
