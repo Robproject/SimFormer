@@ -30,6 +30,9 @@ def get_efficiency(V1, V2, I1, I2):
     n = Po/Pi
     return n
 
+def print_phasor(name, unit, var):
+    return print( f'{name} = %5.2f\u2220%4.2f{unit}' % (abs(var), cmath.phase(var) * 180 / cmath.pi))
+
 def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
 
     VA = VA * Load
@@ -39,7 +42,7 @@ def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
     else:
         ReI_2 = VA * pf / V_2
         ImI_2 = VA /V_2 * math.sin(math.acos(pf))
-        if LeadLag == "lead":
+        if LeadLag == 'lead':
             I_2 = complex(ReI_2, ImI_2)
         else:
             I_2 = complex(ReI_2, -ImI_2)
@@ -61,8 +64,10 @@ def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
     print('\u03B7 = %4.2f%%' % (n*100))
     VR = (abs(E_2) - abs(V_2))/(a*abs(E_2))
     print('VR = %4.4f%%' % (VR*100))
-    print('V_1 = %5.2f\u2220%4.2fV, I_1 = %5.2f\u2220%4.2fA' % (abs(V_1), cmath.phase(V_1)*180/cmath.pi, abs(I_1), cmath.phase(I_1)*180/cmath.pi) )
-    print('V_2 = %5.2f\u2220%4.2fV, I_2 = %5.2f\u2220%4.2fA' % (abs(V_2), cmath.phase(V_2)*180/cmath.pi, abs(I_2), cmath.phase(I_2)*180/cmath.pi) )
+    print_phasor('V1', 'V', V_1)
+    print_phasor('I1', 'A', I_1)
+    print_phasor('V2', 'V', V_2)
+    print_phasor('I2', 'A', I_2)
 
     arrow = [E_2, E_1, V_2, V_1, I_2, I_1]
     color = ['violet', 'green', 'blue', 'red', 'orange', 'red']
@@ -86,5 +91,5 @@ def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
 
 if __name__ == '__main__':
 
-    SimForm(240, 2400, .8, 1, "lag", 10, 1.5 + 2.5j, .02 + .03j, 6000 + 8000j, 'center' )
+    SimForm(240, 2400, .8, 1, 'lag', 10, 1.5 + 2.5j, .02 + .03j, 6000 + 8000j, 'center' )
 #          V2(V), |S|(VA), Load(.%%), pf(.%%), lead/lag, a, Z1, Z2, ZC, 'before' or 'center'
