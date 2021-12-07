@@ -7,7 +7,6 @@ def arr(x, y, dx, dy):
 def oarr(a):
     return plt.arrow(0, 0, a.real, a.imag, length_includes_head=True, head_width=.1, head_length=1, width=.05)
 
-
 def oarrc(a):
     return plt.arrow(0, 0, a.real, a.imag, length_includes_head=True, head_width=.02, head_length=.02, width=.01)
 
