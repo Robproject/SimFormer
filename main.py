@@ -2,10 +2,9 @@ import math, cmath
 import matplotlib.pyplot as plt
 
 def oarr(a, c):
+    scale = 1
     if c == 'c':
         scale = .2
-    else:
-        scale = 1
     return plt.arrow(0, 0, a.real, a.imag, length_includes_head=True, head_width=.1 * scale , head_length=1 * scale, width=.05 * scale)
 
 def zarr(i, vd):
@@ -17,7 +16,6 @@ def get_vd_dxdy(I, Z):
   vrdy = (I * Z.real).imag
   vxdx = (I * (Z.imag*1j)).real
   vxdy = (I * (Z.imag*1j)).imag
-
   return (vrdx, vrdy, vxdx, vxdy)
 
 def get_I_C(Z, E):
