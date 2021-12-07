@@ -61,8 +61,8 @@ def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
     print('\u03B7 = %4.2f%%' % (n*100))
     VR = (abs(E_2) - abs(V_2))/(a*abs(E_2))
     print('VR = %4.4f%%' % (VR*100))
-    print('V_1 = %5.2f\u2220%4.2fV, I_1 = %5.2f\u2220%4.2fA' % (abs(V_1), cmath.phase(V_1)*180/cmath.pi, cmath.phase(I_1), cmath.phase(I_1)*180/cmath.pi) )
-    print('V_2 = %5.2f\u2220%4.2fV, I_2 = %5.2f\u2220%4.2fA' % (abs(V_2), cmath.phase(V_2)*180/cmath.pi, cmath.phase(I_2), cmath.phase(I_2)*180/cmath.pi) )
+    print('V_1 = %5.2f\u2220%4.2fV, I_1 = %5.2f\u2220%4.2fA' % (abs(V_1), cmath.phase(V_1)*180/cmath.pi, abs(I_1), cmath.phase(I_1)*180/cmath.pi) )
+    print('V_2 = %5.2f\u2220%4.2fV, I_2 = %5.2f\u2220%4.2fA' % (abs(V_2), cmath.phase(V_2)*180/cmath.pi, abs(I_2), cmath.phase(I_2)*180/cmath.pi) )
 
     arrow = [E_2, E_1, V_2, V_1, I_2, I_1]
     color = ['violet', 'green', 'blue', 'red', 'orange', 'red']
