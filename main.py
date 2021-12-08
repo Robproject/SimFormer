@@ -66,6 +66,9 @@ def SimForm(V_2, VA, Load, pf, LeadLag, a, Z_1, Z_2, Z_C, pos):
     print('VR = %4.4f%%' % (VR*100))
     print_phasor('V1', 'V', V_1)
     print_phasor('I1', 'A', I_1)
+    print_phasor('E1', 'V', E_1)
+    print_phasor('IC', 'A', I_C[0])
+    print_phasor('E2', 'V', E_2)
     print_phasor('V2', 'V', V_2)
     print_phasor('I2', 'A', I_2)
 
